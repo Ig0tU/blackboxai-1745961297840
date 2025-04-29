@@ -1,0 +1,15 @@
+{
+    "B_FunctionWP": "COMMANDS",
+    "wp_get_posts": "GET_POSTS",
+    "wp_insert_post": "INSERT_POST",
+    "wp_update_post": "UPDATE_POST",
+    "wp_delete_post": "DELETE_POST",
+    "wp_get_users": "GET_USERS",
+    "wp_insert_user": "INSERT_USER",
+    "wp_update_user": "UPDATE_USER",
+    "wp_delete_user": "DELETE_USER",
+    "wp_get_categories": "GET_CATEGORIES",
+    "wp_insert_category": "INSERT_CATEGORY",
+    "wp_update_category": "UPDATE_CATEGORY",
+    "wp_delete_category": "DELETE_CATEGORY"
+}
