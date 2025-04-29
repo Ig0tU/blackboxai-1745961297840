@@ -4,41 +4,27 @@ namespace Voila\Mappers;
 class Dictionary
 {
     private $commonTerms = [];
-    private $wpToCommon = [];
-    private $joomlaToCommon = [];
 
     public function __construct()
     {
-        // Load mappings from JSON files or define here
-        $this->wpToCommon = json_decode(file_get_contents(__DIR__ . '/../config/wp-functions.json'), true);
-        $this->joomlaToCommon = json_decode(file_get_contents(__DIR__ . '/../config/joomla-functions.json'), true);
+        // Load mappings from the common.json file
+        $commonFile = __DIR__ . '/../config/common.json';
+        $jsonData = file_get_contents($commonFile);
+        $elements = json_decode($jsonData, true);
 
-        // Build common terms dictionary
-        foreach ($this->wpToCommon as $wpFunc => $commonTerm) {
-            $this->commonTerms[$commonTerm]['wordpress'] = $wpFunc;
+        // Build common terms dictionary from common.json
+        foreach ($elements as $element) {
+            $name = $element['name'] ?? null;
+            if ($name) {
+                $this->commonTerms[$name] = $element;
+            }
         }
-        foreach ($this->joomlaToCommon as $joomlaFunc => $commonTerm) {
-            $this->commonTerms[$commonTerm]['joomla'] = $joomlaFunc;
-        }
     }
 
-    public function getCommonTermFromWordPress($wpFunc)
+    public function getElementByName($name)
     {
-        return $this->wpToCommon[$wpFunc] ?? null;
+        return $this->commonTerms[$name] ?? null;
     }
 
-    public function getCommonTermFromJoomla($joomlaFunc)
-    {
-        return $this->joomlaToCommon[$joomlaFunc] ?? null;
-    }
-
-    public function getWordPressFunction($commonTerm)
-    {
-        return $this->commonTerms[$commonTerm]['wordpress'] ?? null;
-    }
-
-    public function getJoomlaFunction($commonTerm)
-    {
-        return $this->commonTerms[$commonTerm]['joomla'] ?? null;
-    }
+    // Additional methods can be added to map between WordPress and Joomla using this common dictionary
 }
