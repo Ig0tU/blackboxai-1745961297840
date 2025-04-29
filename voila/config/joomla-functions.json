@@ -1,0 +1,15 @@
+{
+    "functionA_joomla": "DICTIONARY",
+    "getJoomlaPosts": "GET_POSTS",
+    "insertJoomlaPost": "INSERT_POST",
+    "updateJoomlaPost": "UPDATE_POST",
+    "deleteJoomlaPost": "DELETE_POST",
+    "getJoomlaUsers": "GET_USERS",
+    "insertJoomlaUser": "INSERT_USER",
+    "updateJoomlaUser": "UPDATE_USER",
+    "deleteJoomlaUser": "DELETE_USER",
+    "getJoomlaCategories": "GET_CATEGORIES",
+    "insertJoomlaCategory": "INSERT_CATEGORY",
+    "updateJoomlaCategory": "UPDATE_CATEGORY",
+    "deleteJoomlaCategory": "DELETE_CATEGORY"
+}
