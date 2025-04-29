@@ -13,14 +13,14 @@ class WordPressToJoomla extends Converter
     public function __construct($logger, $wpDbConfig, $joomlaDbConfig)
     {
         parent::__construct($logger);
-        $this->dictionary = new Dictionary();
-        $this->wpDb = new DatabaseHelper(
+        $this->dictionary = new \Voila\Mappers\Dictionary();
+        $this->wpDb = new \Voila\Utils\DatabaseHelper(
             $wpDbConfig['host'],
             $wpDbConfig['dbname'],
             $wpDbConfig['username'],
             $wpDbConfig['password']
         );
-        $this->joomlaDb = new DatabaseHelper(
+        $this->joomlaDb = new \Voila\Utils\DatabaseHelper(
             $joomlaDbConfig['host'],
             $joomlaDbConfig['dbname'],
             $joomlaDbConfig['username'],
@@ -87,7 +87,9 @@ class WordPressToJoomla extends Converter
 
     private function mapPostToArticle($post, $postMeta = [])
     {
-        // Map WordPress post fields to Joomla article fields
+        // Use common dictionary to map elements
+        $element = $this->dictionary->getElementByName('accordion'); // Example: using 'accordion' as an example element
+
         $article = [
             'title' => $post['post_title'],
             'content' => $post['post_content'],
@@ -101,6 +103,8 @@ class WordPressToJoomla extends Converter
                 $article['alias'] = $postMeta['subtitle'];
             }
         }
+
+        // Additional mapping logic can be added here using $element properties
 
         return $article;
     }
