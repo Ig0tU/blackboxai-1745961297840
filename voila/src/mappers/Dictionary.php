@@ -26,5 +26,10 @@ class Dictionary
         return $this->commonTerms[$name] ?? null;
     }
 
+    public function getAllElements()
+    {
+        return $this->commonTerms;
+    }
+
     // Additional methods can be added to map between WordPress and Joomla using this common dictionary
 }
